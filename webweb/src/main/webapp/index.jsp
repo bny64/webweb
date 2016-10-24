@@ -113,8 +113,7 @@ input{
 					<h4>왼쪽에 정보를 입력하고 회원 가입 버튼을 눌러주세요</h4>
 					<h4></h4>
 					<br> <br>
-					<c:url value="/join" var="join" />
-					<a href="${join }">회원 가입</a>
+					<button id="joinBtn">회원 가입</button>
 				</div>
 			</div>
 		</section>
@@ -262,15 +261,49 @@ input{
 			setInterval(function(){alert(i);}, 4000);
 		}  */
 		
+		$("#name").on("focusout", function() {
+			var name = $("#name").val();
+			if (!(name.length==3)) {
+				alert("이름은 반드시 세자리 까지 입력해야 합니다");
+				$("#name").val("");
+			}
+		});
+		
 		$("#email").on("focusout",function(){
 			var email = $("#email").val();
-			console.log(email);
-			function validateEmail(email) {
-			    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-			    return re.test(email);
-			}
-			
+			var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+			if(regex.test(email) === false) {  
+			    alert("잘못된 이메일 형식입니다. ex)abc@def.ghi");  
+			    $("#email").val("");
+			} else {  
+			    // gogo  
+			}  
 		});
+		
+		$("#phone").on("focusout",function(){
+			var phone = $("#phone").val();
+			var regex = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g;
+			if(regex.test(phone)===false){
+				alert("휴대본 번호 형식이 맞지 않습니다. ex)000-000-0000");
+				$("#phone").val("");
+			}
+		});
+		
+		$("#joinBtn").on("click",function(){
+			var name = $("#name").val();
+			var id = $("#id").val();
+			var pass = $("#password").val();
+			var email = $("#email").val();
+			var phone = $("#phone").val();
+			if(name !== null && pass !== null && email !== null && id !== null && phone !== null){
+				alert("가입을 환영합니다");
+			}else{
+				alert("회원 정보를 모두 입력해 주세요");
+			}
+		});
+		
+		
+		
 		
 		
 </script>
