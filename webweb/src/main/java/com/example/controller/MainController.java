@@ -28,15 +28,20 @@ public class MainController {
 		return "gidomoon";
 	}
 	
-	@RequestMapping(value="join", method=RequestMethod.GET)
+	@RequestMapping(value="/join", method=RequestMethod.GET)
 	public String viewMember(Model model){
 		logger.trace("join 페이지로 이동");
 		return "join";
 	}
 	
-	@RequestMapping(value="my", method=RequestMethod.GET)
+	@RequestMapping(value="/my", method=RequestMethod.GET)
 	public String myView(Model model){
 		logger.trace("my 페이지로 이동");
 		return "my";
+	}
+	
+	@RequestMapping(value="/calendar", method=RequestMethod.GET)
+	public String calendar(Model model){
+		return "calendar";
 	}
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -253,9 +252,10 @@ input{
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
+		<c:url value="/my" var="my">
 		$("#drible").on("click", function(){
 			console.log($("#drible").val());	
-			showModalDialog("my","", "dialogHeight:200px;dialogWidth:200px");	
+			showModalDialog("/my","", "dialogHeight:200px;dialogWidth:200px");	
 		});
 		 /* for(var i=0;i<3;i++){
 			setInterval(function(){alert(i);}, 4000);
@@ -301,10 +301,5 @@ input{
 				alert("회원 정보를 모두 입력해 주세요");
 			}
 		});
-		
-		
-		
-		
-		
 </script>
 </html>
