@@ -297,7 +297,7 @@ input{
 			var email = $("#email").val();
 			var phone = $("#phone").val();
 		}); */
-		
+		//kmj0907@kitri.re.kr
 		$("#calendar").on("click", function(){
 			<c:url value="/calendar" var="calendar" />
 			window.open("${calendar}","캘린더",'height=500, Width=700, left=440, top=300, color=white');
