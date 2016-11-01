@@ -35,6 +35,7 @@
 <style>
 #nav {
 	margin-right: 70%;
+	
 }
 input{
 	width: 20%;
@@ -257,7 +258,7 @@ input{
 		$("#drible").on("click", function(){
 			<c:url value="/my" var="my"/>
 			console.log($("#drible").val());	
-			showModalDialog("/my","", "dialogHeight:200px;dialogWidth:200px");	
+			window.open("${my}","window", 'height=400, Width=400, left=400, top=400, color=white');	
 		});
 		 /* for(var i=0;i<3;i++){
 			setInterval(function(){alert(i);}, 4000);

@@ -24,6 +24,11 @@
 <script src="<%=request.getContextPath()%>/css/style-wide.js"></script>
 <script src="<%=request.getContextPath()%>/img/banner.jpg"></script>
 <script src="<%=request.getContextPath()%>/img/placeholder.png"></script>
+<style>
+	body{
+		color: white;
+	}
+</style>
 </head>
 <body>
 	안녕하세요. 컴퓨터 공학부 4학년 배남열입니다.
