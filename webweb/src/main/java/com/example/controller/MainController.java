@@ -44,4 +44,9 @@ public class MainController {
 	public String calendar(Model model){
 		return "calendar";
 	}
+	
+	@RequestMapping(value="/map", method=RequestMethod.GET)
+	public String map(Model model){
+		return "map";
+	}
 }

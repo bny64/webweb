@@ -145,13 +145,11 @@ input{
 				<div class="4u">
 					<ul class="special-icons">
 						<li><span class="fa fa-cogs"></span>
-							<h3>Nulla luctus eleifend</h3>
-							<p>In posuere eleifend odio. Quisque semper augue mattis
-								wisi. Maecenas ligula pellentesque.</p></li>
+							<a href="#"><h3 id="calendar">달력</h3></a>
+							<p>저희 사이트에서는 캘린더 기능을 제공합니다.</p></li>
 						<li><span class="fa fa-wrench"></span>
-							<h3>Etiam posuere augue</h3>
-							<p>Maecenas ligula. Pellentesque viverra vulputate enim.
-								Aliquam erat volutpat liguala.</p></li>
+							<a href="#"><h3 id="map">지도</h3></a>
+							<p>저희 사이트에서는 지도 기능을 제공합니다.</p></li>
 						<li><span class="fa fa-leaf"></span>
 							<h3>Fusce ultrices fringilla</h3>
 							<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at,
@@ -258,7 +256,7 @@ input{
 		$("#drible").on("click", function(){
 			<c:url value="/my" var="my"/>
 			console.log($("#drible").val());	
-			window.open("${my}","window", 'height=400, Width=400, left=400, top=400, color=white');	
+			window.open("${my}","window", 'height=400, Width=400, left=10, top=400, color=white');	
 		});
 		 /* for(var i=0;i<3;i++){
 			setInterval(function(){alert(i);}, 4000);
@@ -266,8 +264,8 @@ input{
 		
 		$("#name").on("focusout", function() {
 			var name = $("#name").val();
-			if (!(name.length==3)) {
-				alert("이름은 반드시 세자리 까지 입력해야 합니다");
+			if (!(name.length>=2 && name.length <=4 )) {
+				alert("이름은 반드시 두 자리에서 네 자리까지 입력해야 합니다");
 				$("#name").val("");
 			}
 		});
@@ -292,17 +290,22 @@ input{
 			}
 		});
 		
-		$("#joinBtn").on("click",function(){
+		/* $("#joinBtn").on("click",function(){
 			var name = $("#name").val();
 			var id = $("#id").val();
 			var pass = $("#password").val();
 			var email = $("#email").val();
 			var phone = $("#phone").val();
-			if(name !== null && pass !== null && email !== null && id !== null && phone !== null){
-				alert("가입을 환영합니다");
-			}else{
-				alert("회원 정보를 모두 입력해 주세요");
-			}
+		}); */
+		
+		$("#calendar").on("click", function(){
+			<c:url value="/calendar" var="calendar" />
+			window.open("${calendar}","캘린더",'height=500, Width=700, left=440, top=300, color=white');
+		});
+		
+		$("#map").on("click", function(){
+			<c:url value="/map" var="map" />
+			window.open("${map}","지도",'height=500, Width=700, left=440, top=300, color=white');
 		});
 </script>
 </html>

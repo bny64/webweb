@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>기도문</title>
+<title>자기 소개서</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
