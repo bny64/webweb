@@ -7,8 +7,8 @@
 
 <html>
 <head>
-<meta charset="utf-8">
 <title>Welcome</title>
+<meta charset="utf-8">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -32,7 +32,6 @@
 	<link rel="stylesheet" href="css/skel.css" />
 	<link rel="stylesheet" href="css/style.css" />
 </noscript>
-</head>
 <style>
 #nav {
 	margin-right: 70%;
@@ -41,6 +40,8 @@ input{
 	width: 20%;
 }
 </style>
+</head>
+
 <body class="homepage">
 
 	<!-- Header Wrapper -->
@@ -252,8 +253,9 @@ input{
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
-		<c:url value="/my" var="my">
+		
 		$("#drible").on("click", function(){
+			<c:url value="/my" var="my"/>
 			console.log($("#drible").val());	
 			showModalDialog("/my","", "dialogHeight:200px;dialogWidth:200px");	
 		});
