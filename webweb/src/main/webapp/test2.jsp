@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -12,18 +12,29 @@
 		var btn = ' <button onclick="delete1">삭제</button>';
 		
 		var li = document.createElement("li");
-		li.innerHTML += songName.value;
-		li.innerHTML += btn;
+		li.innerHTML += document.getElementById("songName").value;
+//		li.innerHTML += btn;
 		var ul = document.getElementById("playlist");
 		ul.appendChild(li);
 		
+		var storage = document.getElementById("songName").value;
+		
+		localStorage.setItem('music',storage);
 	}
-	function delete1(){
-		var ul = document.getElementById("playlist");
-		console.log(ul);
-		var ul2 = $("li").val();
-		var li = document.getElementById("li");
-		ul.removeChild(li);
+	
+	window.onload = function(){
+		console.log(localStorage);
+		for(var i=0; i<localStorage.length; i++){
+			var key = localStorage.getItem('music');
+			console.log(key);
+			var ul = document.getElementById("playlist");
+			var li = document.createElement("li");
+			li.innerHTML += key;
+			ul.appendChild(li);
+		}
+	};
+	function reset(){
+		localStorage.removeItem('music');
 	}
 </script>
 </head>
@@ -31,6 +42,7 @@
 	<form>
 		<input type="text" id="songName" /> 
 		<input type="button" value="노래추가"	onclick="addSong()" />
+		<input type="button" value="초기화" onclick="reset()" />
 	</form>
 	<ul id="playlist">
 		<li>사랑이었다-지코</li>

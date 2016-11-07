@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <html>
 <head>
@@ -35,9 +36,9 @@
 <style>
 #nav {
 	margin-right: 70%;
-	
 }
-input{
+
+input {
 	width: 20%;
 }
 </style>
@@ -92,17 +93,12 @@ input{
 				<div class="6u">
 					<header class="major">
 						<h2>회원 가입</h2>
-						<span class="byline"> 
-						<label>이름</label> 
-						<input type="text" id="name" name="name" /> 
-						<label>아이디</label> 
-						<input type="text" id="id" name="id" /> 
-						<label>패스워드</label> 
-						<input type="text" id="password" name="password" /> 
-						<label>이메일</label> 
-						<input type="text" id="email" name="email" />
-						<label>연락처</label>
-						<input type="text" id="phone" name="phone">
+						<span class="byline"> <label>이름</label> <input type="text"
+							id="name" name="name" /> <label>아이디</label> <input type="text"
+							id="id" name="id" /> <label>패스워드</label> <input type="text"
+							id="password" name="password" /> <label>이메일</label> <input
+							type="text" id="email" name="email" /> <label>연락처</label> <input
+							type="text" id="phone" name="phone">
 						</span>
 					</header>
 				</div>
@@ -144,11 +140,11 @@ input{
 			<div class="row flush">
 				<div class="4u">
 					<ul class="special-icons">
-						<li><span class="fa fa-cogs"></span>
-							<a href="#"><h3 id="calendar">달력</h3></a>
+						<li><span class="fa fa-cogs"></span> <a href="#"><h3
+									id="calendar">달력</h3></a>
 							<p>저희 사이트에서는 캘린더 기능을 제공합니다.</p></li>
-						<li><span class="fa fa-wrench"></span>
-							<a href="#"><h3 id="map">지도</h3></a>
+						<li><span class="fa fa-wrench"></span> <a href="#"><h3
+									id="map">지도</h3></a>
 							<p>저희 사이트에서는 지도 기능을 제공합니다.</p></li>
 						<li><span class="fa fa-leaf"></span>
 							<h3>Fusce ultrices fringilla</h3>
@@ -252,60 +248,64 @@ input{
 </body>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script>
+	$("#drible")
+			.on(
+					"click",
+					function() {
+						<c:url value="/my" var="my"/>
+						console.log($("#drible").val());
+						window
+								.open("${my}", "window",
+										'height=400, Width=400, left=10, top=400, color=white, scrollbars=yes');
+					});
+	/* for(var i=0;i<3;i++){
+	setInterval(function(){alert(i);}, 4000);
+	}  */
+
+	$("#name").on("focusout", function() {
+		var name = $("#name").val();
+		if (!(name.length >= 2 && name.length <= 4)) {
+			alert("이름은 반드시 두 자리에서 네 자리까지 입력해야 합니다");
+			$("#name").val("");
+		}
+	});
+
+	$("#email")
+			.on(
+					"focusout",
+					function() {
+						var email = $("#email").val();
+						var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+						if (regex.test(email) === false) {
+							alert("잘못된 이메일 형식입니다. ex)abc@def.ghi");
+							$("#email").val("");
+						} else {
+							// gogo  
+						}
+					});
+
+	$("#phone").on("focusout", function() {
+		var phone = $("#phone").val();
+		var regex = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g;
+		if (regex.test(phone) === false) {
+			alert("휴대본 번호 형식이 맞지 않습니다. ex)000-000-0000");
+			$("#phone").val("");
+		}
+	});
+
+	$("#joinBtn").on("click", function() {
+		var array = $("input").val();
 		
-		$("#drible").on("click", function(){
-			<c:url value="/my" var="my"/>
-			console.log($("#drible").val());	
-			window.open("${my}","window", 'height=400, Width=400, left=10, top=400, color=white');	
-		});
-		 /* for(var i=0;i<3;i++){
-			setInterval(function(){alert(i);}, 4000);
-		}  */
-		
-		$("#name").on("focusout", function() {
-			var name = $("#name").val();
-			if (!(name.length>=2 && name.length <=4 )) {
-				alert("이름은 반드시 두 자리에서 네 자리까지 입력해야 합니다");
-				$("#name").val("");
-			}
-		});
-		
-		$("#email").on("focusout",function(){
-			var email = $("#email").val();
-			var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-			if(regex.test(email) === false) {  
-			    alert("잘못된 이메일 형식입니다. ex)abc@def.ghi");  
-			    $("#email").val("");
-			} else {  
-			    // gogo  
-			}  
-		});
-		
-		$("#phone").on("focusout",function(){
-			var phone = $("#phone").val();
-			var regex = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g;
-			if(regex.test(phone)===false){
-				alert("휴대본 번호 형식이 맞지 않습니다. ex)000-000-0000");
-				$("#phone").val("");
-			}
-		});
-		
-		/* $("#joinBtn").on("click",function(){
-			var name = $("#name").val();
-			var id = $("#id").val();
-			var pass = $("#password").val();
-			var email = $("#email").val();
-			var phone = $("#phone").val();
-		}); */
-		//kmj0907@kitri.re.kr
-		$("#calendar").on("click", function(){
-			<c:url value="/calendar" var="calendar" />
-			window.open("${calendar}","캘린더",'height=500, Width=700, left=440, top=300, color=white');
-		});
-		
-		$("#map").on("click", function(){
-			<c:url value="/map" var="map" />
-			window.open("${map}","지도",'height=500, Width=700, left=440, top=300, color=white');
-		});
+	});
+	//kmj0907@kitri.re.kr
+	$("#calendar").on("click",function() {
+						<c:url value="/calendar" var="calendar" />
+						window.open("${calendar}", "캘린더",'height=500, Width=700, left=440, top=300, color=white');
+					});
+
+	$("#map").on("click",function() {
+						<c:url value="/map" var="map" />
+						window.open("${map}", "지도",'height=500, Width=700, left=440, top=300, color=white');
+					});
 </script>
 </html>
