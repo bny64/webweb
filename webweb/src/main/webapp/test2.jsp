@@ -39,15 +39,18 @@
 </script>
 </head>
 <body>
-	<form>
-		<input type="text" id="songName" /> 
-		<input type="button" value="노래추가"	onclick="addSong()" />
-		<input type="button" value="초기화" onclick="reset()" />
-	</form>
-	<ul id="playlist">
-		<li>사랑이었다-지코</li>
-		<li>걱정말아요그대-이적</li>
-		<li>나군대간다-이승기</li>
-	</ul>
+	<%!double radius = 3.0; %>
+	<%!
+		public double calcArea(double r){
+			return r*r*3.14;
+		
+	}
+		public double calcArea2(double r){
+			return r*2*3.14;
+		}
+	%>
+	반지름<%=radius %>의 원 면적 : <%=calcArea(radius) %><br>
+	반지름<%=radius %>의 원 둘레 : <%=calcArea2(radius) %>
+	
 </body>
 </html>
