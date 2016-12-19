@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardMapper">
+	
+	<insert id="insertBoard" parameterType="board">
+		insert into board(user_no, board_line1, board_line2, board_line3, board_line4,
+		 board_line5, board_line6, board_line7, board_line8, board_line9, board_line10,
+		 board_no, board_title, lanuage, board_date)
+		values(#{userNo}, #{boardLine1}, #{boardLine2}, #{boardLine3}, #{boardLine4},
+		 #{boardLine5}, #{boardLine6}, #{boardLine7}, #{boardLine8}, #{boardLine9},
+		 #{boardLine10}, board_no_seq.nextval, #{boardTitle},#{lanuage}, sysdate)
+	</insert>
+	<select id="selectAllBoard" resultMap="boardBase" parameterType="string">
+		select *
+		from board
+		where lanuage = #{lanuage}
+		order by board_date desc
+	</select>
+	<select id="selectBoard" resultMap="boardBase" parameterType="int">
+		select *
+		from board
+		where board_no = #{boardNo}
+	</select>
+	<select id="selectAllBoard2" resultMap="boardBase">
+		select *
+		from board
+		order by board_date desc
+	</select>
+	<select id="selectBoardUser" resultMap="boardBase" parameterType="int">
+		select *
+		from board
+		where user_no = #{userNo}
+		order by board_date desc
+	</select>
+	<delete id="deleteBoard" parameterType="int">
+		delete from board
+		where board_no = #{boardNo}
+	</delete>
+	<resultMap type="board" id="boardBase">
+		<id column="board_no" property="boardNo"/>
+		<result column="board_line1" property="boardLine1"/>
+		<result column="board_line2" property="boardLine2"/>
+		<result column="board_line3" property="boardLine3"/>
+		<result column="board_line4" property="boardLine4"/>
+		<result column="board_line5" property="boardLine5"/>
+		<result column="board_line6" property="boardLine6"/>
+		<result column="board_line7" property="boardLine7"/>
+		<result column="board_line8" property="boardLine8"/>
+		<result column="board_line9" property="boardLine9"/>
+		<result column="board_line10" property="boardLine10"/>
+		<result column="user_no" property="userNo"/>
+		<result column="board_title" property="boardTitle"/>
+		<result column="lanuage" property="lanuage"/>
+		<result column="board_date" property="boardDate"/>
+	</resultMap>
+
+</mapper>

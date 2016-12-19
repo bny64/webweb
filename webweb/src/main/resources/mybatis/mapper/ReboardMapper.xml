@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReboardMapper">
+	
+	<insert id="insertReboard" parameterType="reboard">
+		insert into reboard
+		values(#{userNo}, reboard_no_seq.nextval, #{boardNo}, #{boardLine1}, #{boardLine2}, #{boardLine3}, #{boardLine4},
+		 #{boardLine5}, #{boardLine6}, #{boardLine7}, #{boardLine8}, #{boardLine9},
+		 #{boardLine10}, #{lanuage}, sysdate)
+	</insert>
+	<select id="selectReboard" parameterType="int" resultMap="reboardBase">
+		select *
+		from reboard
+		where board_no = #{boardNo}
+	</select>
+	<resultMap type="reboard" id="reboardBase">
+		<id column="reboard_no" property="reboardNo"/>
+		<result column="reboard_line1" property="boardLine1"/>
+		<result column="reboard_line2" property="boardLine2"/>
+		<result column="reboard_line3" property="boardLine3"/>
+		<result column="reboard_line4" property="boardLine4"/>
+		<result column="reboard_line5" property="boardLine5"/>
+		<result column="reboard_line6" property="boardLine6"/>
+		<result column="reboard_line7" property="boardLine7"/>
+		<result column="reboard_line8" property="boardLine8"/>
+		<result column="reboard_line9" property="boardLine9"/>
+		<result column="reboard_line10" property="boardLine10"/>
+		<result column="user_no" property="userNo"/>
+		<result column="board_no" property="boardNo"/>
+		<result column="lanuage" property="lanuage"/>
+		<result column="reboard_date" property="reboardDate"/>
+	</resultMap>
+
+</mapper>

@@ -7,16 +7,20 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import ch.qos.logback.classic.Logger;
 
-@PropertySource({ "classpath:/config/dbconfig.properties" })
+@PropertySource({"classpath:/config/dbconfig.properties"})
+@ComponentScan(basePackages={"com.example.dao"})
 @Configuration
+@EnableTransactionManagement
 public class ApplicationConfig {
 
 	@Bean
